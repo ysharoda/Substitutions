@@ -1,0 +1,57 @@
+
+\documentclass[12pt,fleqn]{article}
+
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	keepspaces=true,
+}
+\usepackage[margin=1in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+\title{Notes on Substitution as presented in the book: "Type Theory and Formal Proof"}
+
+\begin{document}
+
+\maketitle
+
+Informally\footnote{This part is based on definitions from: Type Theory and Formal Proof by 
+Nederpelt and Geuvers.}, 
+\verb|M[x := N]| is equivalent to the expression \verb|M| in which every \verb|x| has been 
+replaced with \verb|N|. It can be seen as beta-reduction of $(\lambda x \cdot M)N$. 
+
+The formal definition (P.12) is: 
+\begin{enumerate}
+	\item[(1a)] $x[x := N] \equiv N$
+	\item[(1b)] $y[x := N] \equiv y \text{ if } x \not\equiv y$
+	\item[(2)] $(PQ)[x := N] \equiv (P[x := N]) (Q[x := N])$
+	\item[(3)] $(\lambda y \cdot P)[x := N] \equiv \lambda z \cdot (P^{y \to 
+	z}[x := N])$| if $\lambda z \cdot P^{y \to z} $ is an $\alpha$-variant of $\lambda y \cdot P$ 
+	such that $z \notin FV(N)$.
+	
+\end{enumerate}
+The categorical semantics of substitutions is under progress for me to understand. Useful 
+resources I am looking at are: 
+\begin{itemize}
+	\item \url{http://math.andrej.com/2012/09/28/substitution-is-pullback/}
+	\item \url{https://ncatlab.org/nlab/show/categorical+model+of+dependent+types}
+	\item \url{https://ncatlab.org/nlab/show/substitution}
+	\item \url{https://math.stackexchange.com/questions/2403265/substitution-is-pullback}
+	\item \url{https://ncatlab.org/nlab/show/term}
+	\item \url{https://ncatlab.org/nlab/show/display+map}
+	\item 
+	\url{https://ncatlab.org/nlab/show/categorical+model+of+dependent+types#display_map_categories}
+	\item \url{https://ncatlab.org/nlab/show/substitution#CategoricalSemantics}
+	\item \url{https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory}
+	\item \url{https://ncatlab.org/nlab/show/categorical+model+of+dependent+types}
+\end{itemize}
+
+\end{document}
+
